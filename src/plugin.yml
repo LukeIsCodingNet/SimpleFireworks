@@ -1,0 +1,12 @@
+main: net.lukeiscoding.spigot.simplefireworks.SimpleFireworks
+name: SimpleFireworks
+version: 0.1.0
+author: LukeIsCoding
+api-version: 1.17
+
+commands:
+  firework:
+    description: Spawns a firework
+    permission: simplefireworks.firework
+    permission-message: I am sorry but you do not have permission to use this command, please contact a serever admin if you think this is an error.
+    default: op
