@@ -42,6 +42,7 @@ public class CreateFirework {
         for (int i = 0; i < amount; i++) {
             Firework firework = (Firework) loc.getWorld().spawnEntity(loc, EntityType.FIREWORK);
             firework.setFireworkMeta(fireworkMeta);
+            firework.detonate();
         }
     }
 }
