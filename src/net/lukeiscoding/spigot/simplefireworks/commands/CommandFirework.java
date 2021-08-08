@@ -1,7 +1,7 @@
 package net.lukeiscoding.spigot.simplefireworks.commands;
 
-import net.lukeiscoding.spigot.simplefireworks.helpers.CreateFirework;
-import org.bukkit.ChatColor;
+import net.lukeiscoding.spigot.simplefireworks.api.SpawnFirework;
+import org.bukkit.Color;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -28,6 +28,8 @@ import org.bukkit.entity.Player;
 
 public class CommandFirework implements CommandExecutor {
 
+    private static final SpawnFirework spawnFirework = new SpawnFirework();
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         // cast the command sender to a player
@@ -35,19 +37,7 @@ public class CommandFirework implements CommandExecutor {
 
         if (sender.hasPermission("simplefireworks.firework") && p.hasPermission("simplefireworks.firework")) {
             if (cmd.getName().equalsIgnoreCase("firework")) {
-                // check if no command arguments have been passed
-                if (args.length == 0) {
-                    sender.sendMessage(ChatColor.RED + "Error in command syntax, please see command help!");
-                    return true;
-                }
-
-                // convert the value of arg 1 to a int
-                int arg1 = Integer.parseInt(args[1]);
-
-                // check if the amount of args is equal to 1
-                if (args.length == 1) {
-                    CreateFirework.spawnFireWork(p.getLocation(), arg1);
-                }
+                spawnFirework.spawnFirework(20, 20, 20, p.getWorld(), Color.LIME, true, 100);
             }
         }
 
